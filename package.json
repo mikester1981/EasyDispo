@@ -1,0 +1,26 @@
+{
+  "name": "easydispo-build-prototype",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "ci": "npm run build",
+    "clean": "node -e \"import fs from 'node:fs'; fs.rmSync('dist', {recursive:true, force:true});\""
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "leaflet": "latest",
+    "jszip": "latest"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "latest"
+  }
+}
