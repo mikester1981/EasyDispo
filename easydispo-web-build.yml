@@ -1,0 +1,54 @@
+name: EasyDispo Web Build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+  schedule:
+    # täglich 09:00 Uhr Deutschland im Winter = 08:00 UTC.
+    # Im Sommer wäre 09:00 Deutschland = 07:00 UTC.
+    # Für einen festen lokalen 09:00-Uhr-Termin später ggf. anpassen.
+    - cron: "0 8 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: easydispo-web-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web-build:
+    name: Build Vite web app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Abhängigkeiten installieren
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Web-App bauen
+        run: npm run build
+
+      - name: Build-Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: easydispo-web-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
