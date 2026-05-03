@@ -1,0 +1,19 @@
+{
+  "name": "EasyDispo",
+  "short_name": "EasyDispo",
+  "description": "Disposition, Strecken-Viewer und Umleitungs-Editor für ÖPNV und Busbetrieb.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape-primary",
+  "background_color": "#FAF7EE",
+  "theme_color": "#1A2B4A",
+  "icons": [
+    {
+      "src": "/icons/easydispo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
