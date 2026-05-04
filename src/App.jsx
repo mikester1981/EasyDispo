@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import LandingPage from './modules/landing/LandingPage.jsx';
-import LegacyFrame from './modules/legacy/LegacyFrame.jsx';
+import LandingPage from "./LandingPage.jsx";
+import LegacyFrame from "./LegacyFrame.jsx";
 
 function getRoute() {
   const hash = window.location.hash.replace(/^#\/?/, '').trim();
